@@ -665,13 +665,21 @@
       const conclusion = document.getElementById('conclusion').value.trim();
       const politesse = document.getElementById('politesse').value.trim();
       const signature = document.getElementById('signature').value.trim();
+
+      // Séparer le lieu et la date
+      const dateParts = date.split(', le ');
+      const lieu = dateParts[0] ? dateParts[0] + ',' : '';
+      const formattedDate = dateParts[1] ? 'le ' + dateParts[1] : '';
+
       const html = `
         <div class="preview-print-coords">
           ${coordonnees.split('\n').map(line => `<p>${line}</p>`).join('')}
         </div>
         <div class="preview-print-right">
           <p>${entreprise.split('\n').join('<br>')}</p>
-          <p>${date}</p>
+          <p></p> <!-- Saut de ligne -->
+          <p>${lieu}</p>
+          <p>${formattedDate}</p>
         </div>
         <h2 class="preview-print-objet">${objet}</h2>
         <p>${salutation}</p>
