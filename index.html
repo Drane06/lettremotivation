@@ -19,8 +19,7 @@
       padding: 20mm;
     }
 
-    textarea,
-    input {
+    textarea, input {
       text-align: justify;
     }
 
@@ -90,12 +89,7 @@
         font-family: 'Times New Roman', serif;
       }
 
-      .container,
-      .print-button,
-      .sidebar,
-      #main-page,
-      .copy-button,
-      .view-button {
+      .container, .print-button, .sidebar, #main-page, .copy-button, .view-button {
         display: none !important;
       }
 
@@ -109,10 +103,7 @@
         padding: 15mm;
       }
 
-      #print-content p,
-      #print-content h1,
-      #print-content h2,
-      #print-content div {
+      #print-content p, #print-content h1, #print-content h2, #print-content div {
         margin: 0;
         padding: 0;
       }
@@ -134,7 +125,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container mx-auto grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-5 p-5">
     <div id="main-page" class="edit-page bg-white shadow-xl rounded-lg text-sm leading-relaxed p-8">
@@ -147,115 +137,65 @@
       </p>
       <div class="flex flex-col sm:flex-row justify-between mb-8">
         <div class="field w-full sm:w-1/2 mb-4 sm:mb-0 relative">
-          <button onclick="corriger('coordonnees')"
-            class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-            📝 Corriger
-          </button>
-          <textarea id="coordonnees" rows="4"
-            class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y"
-            placeholder="Vos coordonnées complètes ici..."></textarea>
+          <button onclick="corriger('coordonnees')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+          <textarea id="coordonnees" rows="4" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y" placeholder="Vos coordonnées complètes ici..."></textarea>
           <div id="fb-coordonnees" class="feedback p-2 mt-2 rounded-md hidden"></div>
           <div id="fb-ia-coordonnees" class="feedback-ai hidden"></div>
         </div>
         <div class="right-block w-full sm:w-1/2 flex flex-col items-end">
           <div class="field right mb-4 relative">
-            <button onclick="corriger('entreprise')"
-              class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-              📝 Corriger
-            </button>
-            <textarea id="entreprise" rows="3"
-              class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y"
-              placeholder="Coordonnées du destinataire..."></textarea>
+            <button onclick="corriger('entreprise')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+            <textarea id="entreprise" rows="3" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y" placeholder="Coordonnées du destinataire..."></textarea>
             <div id="fb-entreprise" class="feedback p-2 mt-2 rounded-md hidden"></div>
             <div id="fb-ia-entreprise" class="feedback-ai hidden"></div>
           </div>
           <div class="field right mb-4 relative">
-            <button onclick="corriger('date')"
-              class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-              📝 Corriger
-            </button>
-            <input id="date"
-              class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all"
-              placeholder="Fait à Paris, le 9 février 2026" />
+            <button onclick="corriger('date')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+            <input id="date" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all" placeholder="Fait à Paris, le 9 février 2026" />
             <div id="fb-date" class="feedback p-2 mt-2 rounded-md hidden"></div>
             <div id="fb-ia-date" class="feedback-ai hidden"></div>
           </div>
         </div>
       </div>
       <div class="field objet relative">
-        <button onclick="corriger('objet')"
-          class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-          📝 Corriger
-        </button>
-        <input id="objet"
-          class="w-full font-bold border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all"
-          placeholder="Objet : Demande de stage d'observation du 9 au 13 février 2026" />
+        <button onclick="corriger('objet')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+        <input id="objet" class="w-full font-bold border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all" placeholder="Objet : Demande de stage d'observation du 9 au 13 février 2026" />
         <div id="fb-objet" class="feedback p-2 mt-2 rounded-md hidden"></div>
         <div id="fb-ia-objet" class="feedback-ai hidden"></div>
       </div>
       <div class="field relative">
-        <button onclick="corriger('salutation')"
-          class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-          📝 Corriger
-        </button>
-        <input id="salutation"
-          class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all"
-          placeholder="Madame, Monsieur," />
+        <button onclick="corriger('salutation')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+        <input id="salutation" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all" placeholder="Madame, Monsieur," />
         <div id="fb-salutation" class="feedback p-2 mt-2 rounded-md hidden"></div>
         <div id="fb-ia-salutation" class="feedback-ai hidden"></div>
       </div>
       <div class="field relative">
-        <button onclick="corriger('intro')"
-          class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-          📝 Corriger
-        </button>
-        <textarea id="intro" rows="4"
-          class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y"
-          placeholder="Paragraphe d'introduction..."></textarea>
+        <button onclick="corriger('intro')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+        <textarea id="intro" rows="4" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y" placeholder="Paragraphe d'introduction..."></textarea>
         <div id="fb-intro" class="feedback p-2 mt-2 rounded-md hidden"></div>
         <div id="fb-ia-intro" class="feedback-ai hidden"></div>
       </div>
       <div class="field relative">
-        <button onclick="corriger('developpement')"
-          class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-          📝 Corriger
-        </button>
-        <textarea id="developpement" rows="6"
-          class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y"
-          placeholder="Paragraphe de développement..."></textarea>
+        <button onclick="corriger('developpement')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+        <textarea id="developpement" rows="6" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y" placeholder="Paragraphe de développement..."></textarea>
         <div id="fb-developpement" class="feedback p-2 mt-2 rounded-md hidden"></div>
         <div id="fb-ia-developpement" class="feedback-ai hidden"></div>
       </div>
       <div class="field relative">
-        <button onclick="corriger('conclusion')"
-          class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-          📝 Corriger
-        </button>
-        <textarea id="conclusion" rows="4"
-          class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y"
-          placeholder="Paragraphe de conclusion..."></textarea>
+        <button onclick="corriger('conclusion')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+        <textarea id="conclusion" rows="4" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all resize-y" placeholder="Paragraphe de conclusion..."></textarea>
         <div id="fb-conclusion" class="feedback p-2 mt-2 rounded-md hidden"></div>
         <div id="fb-ia-conclusion" class="feedback-ai hidden"></div>
       </div>
       <div class="field relative">
-        <button onclick="corriger('politesse')"
-          class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-          📝 Corriger
-        </button>
-        <input id="politesse"
-          class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all"
-          placeholder="Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées." />
+        <button onclick="corriger('politesse')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+        <input id="politesse" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all" placeholder="Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées." />
         <div id="fb-politesse" class="feedback p-2 mt-2 rounded-md hidden"></div>
         <div id="fb-ia-politesse" class="feedback-ai hidden"></div>
       </div>
       <div class="field right mt-10 relative">
-        <button onclick="corriger('signature')"
-          class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">
-          📝 Corriger
-        </button>
-        <input id="signature"
-          class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all"
-          placeholder="[Votre prénom et nom]" />
+        <button onclick="corriger('signature')" class="absolute top-[-30px] right-0 z-10 bg-blue-500 text-white text-xs px-4 py-1.5 rounded-full shadow-md hover:bg-blue-600 transition-all duration-300 transform hover:-translate-y-1">📝 Corriger</button>
+        <input id="signature" class="w-full border-2 border-gray-200 rounded-md p-2 bg-gray-50 focus:border-blue-500 focus:bg-white transition-all" placeholder="[Votre prénom et nom]" />
         <div id="fb-signature" class="feedback p-2 mt-2 rounded-md hidden"></div>
         <div id="fb-ia-signature" class="feedback-ai hidden"></div>
       </div>
@@ -263,8 +203,7 @@
     <div id="preview-page" class="edit-page bg-white shadow-xl rounded-lg p-8" style="display:none;">
       <div id="preview-content"></div>
       <div class="flex justify-center mt-8">
-        <button onclick="showEditPage()"
-          class="view-button bg-gray-500 text-white text-lg px-6 py-3 rounded-full font-bold shadow-lg hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-1">
+        <button onclick="showEditPage()" class="view-button bg-gray-500 text-white text-lg px-6 py-3 rounded-full font-bold shadow-lg hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-1">
           Retour à l'édition
         </button>
       </div>
@@ -272,75 +211,62 @@
     <div class="sidebar bg-white shadow-xl rounded-lg p-5 h-fit sticky top-5">
       <h2 class="text-xl font-bold mb-4">📚 Guide de rédaction</h2>
       <div class="progress h-2 bg-gray-200 rounded-full overflow-hidden mb-4">
-        <div id="progress" class="progress-bar h-full w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500">
-        </div>
+        <div id="progress" class="progress-bar h-full w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-500"></div>
       </div>
       <p id="progress-text" class="text-sm text-gray-600 mb-6">Progression : 0/10 sections complétées</p>
       <div class="help-section p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500 mb-4">
         <h3 class="font-semibold text-lg text-gray-800">📍 Coordonnées</h3>
-        <p class="text-sm text-gray-600 mt-1">Vos informations personnelles complètes : nom, adresse, téléphone et email.
-          Précisez que vous êtes élève de 3ème.</p>
+        <p class="text-sm text-gray-600 mt-1">Vos informations personnelles complètes : nom, adresse, téléphone et email. Précisez que vous êtes élève de 3ème.</p>
       </div>
       <div class="help-section p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500 mb-4">
         <h3 class="font-semibold text-lg text-gray-800">🏢 Destinataire</h3>
-        <p class="text-sm text-gray-600 mt-1">Nom du responsable et adresse de l'entreprise. Recherchez le nom exact du
-          responsable si possible.</p>
+        <p class="text-sm text-gray-600 mt-1">Nom du responsable et adresse de l'entreprise. Recherchez le nom exact du responsable si possible.</p>
       </div>
       <div class="help-section p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500 mb-4">
         <h3 class="font-semibold text-lg text-gray-800">📅 Date et lieu</h3>
-        <p class="text-sm text-gray-600 mt-1">Lieu de rédaction et date complète. Format : "Fait à [ville], le [jour mois
-          année]"</p>
+        <p class="text-sm text-gray-600 mt-1">Lieu de rédaction et date complète. Format : "Fait à [ville], le [jour mois année]"</p>
       </div>
       <div class="help-section p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500 mb-4">
         <h3 class="font-semibold text-lg text-gray-800">🎯 Objet</h3>
-        <p class="text-sm text-gray-600 mt-1">Précisez "Demande de stage d'observation" avec les dates exactes du stage (9-13
-          février 2026).</p>
+        <p class="text-sm text-gray-600 mt-1">Précisez "Demande de stage d'observation" avec les dates exactes du stage (9-13 février 2026).</p>
       </div>
       <div class="help-section p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500 mb-4">
         <h3 class="font-semibold text-lg text-gray-800">🎓 Introduction</h3>
-        <p class="text-sm text-gray-600 mt-1">Présentez-vous comme élève de 3ème, mentionnez votre collège, expliquez le
-          cadre obligatoire du stage et votre intérêt pour le domaine d'activité de l'entreprise.</p>
+        <p class="text-sm text-gray-600 mt-1">Présentez-vous comme élève de 3ème, mentionnez votre collège, expliquez le cadre obligatoire du stage et votre intérêt pour le domaine d'activité de l'entreprise.</p>
       </div>
       <div class="help-section p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500 mb-4">
         <h3 class="font-semibold text-lg text-gray-800">💪 Développement</h3>
-        <p class="text-sm text-gray-600 mt-1">Mettez en avant vos qualités personnelles, vos centres d'intérêt liés au
-          domaine, vos résultats scolaires. Expliquez ce que vous espérez découvrir et apprendre.</p>
+        <p class="text-sm text-gray-600 mt-1">Mettez en avant vos qualités personnelles, vos centres d'intérêt liés au domaine, vos résultats scolaires. Expliquez ce que vous espérez découvrir et apprendre.</p>
       </div>
       <div class="help-section p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500 mb-4">
         <h3 class="font-semibold text-lg text-gray-800">🎯 Conclusion</h3>
-        <p class="text-sm text-gray-600 mt-1">Montrez votre motivation pour découvrir les métiers de l'entreprise, proposez
-          un entretien téléphonique ou une rencontre, et remerciez.</p>
+        <p class="text-sm text-gray-600 mt-1">Montrez votre motivation pour découvrir les métiers de l'entreprise, proposez un entretien téléphonique ou une rencontre, et remerciez.</p>
       </div>
       <div class="help-section p-4 bg-gray-100 rounded-lg border-l-4 border-blue-500 mb-4">
         <h3 class="font-semibold text-lg text-gray-800">🤝 Formule de politesse</h3>
-        <p class="text-sm text-gray-600 mt-1">Formule standard et respectueuse. Reprenez la civilité utilisée en début de
-          lettre.</p>
+        <p class="text-sm text-gray-600 mt-1">Formule standard et respectueuse. Reprenez la civilité utilisée en début de lettre.</p>
       </div>
     </div>
   </div>
   <div class="flex justify-center md:justify-end gap-4 p-5 md:fixed md:bottom-8 md:right-8 md:p-0 z-50">
-    <button onclick="showPreviewPage()"
-      class="view-button bg-gray-500 text-white text-lg px-6 py-3 rounded-full font-bold shadow-lg hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-1">
+    <button onclick="showPreviewPage()" class="view-button bg-gray-500 text-white text-lg px-6 py-3 rounded-full font-bold shadow-lg hover:bg-gray-600 transition-all duration-300 transform hover:-translate-y-1">
       👀 Voir l'aperçu
     </button>
   </div>
   <div id="print-content" style="display: none;"></div>
   <textarea id="copy-area" style="position: absolute; left: -9999px;"></textarea>
-  <div id="loading-modal"
-    class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-[1001]">
+  <div id="loading-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-[1001]">
     <div class="bg-white p-6 rounded-lg text-center shadow-xl">
       <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-blue-500 mx-auto mb-4"></div>
       <p class="text-gray-700 font-medium">Correction et analyse en cours...</p>
     </div>
   </div>
-  <div id="message-modal"
-    class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-[1002]">
+  <div id="message-modal" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center hidden z-[1002]">
     <div class="bg-white p-6 rounded-lg text-center shadow-xl max-w-sm">
       <h3 class="text-xl font-bold mb-4"></h3>
       <p class="text-gray-700 mb-6"></p>
       <div class="flex justify-center gap-4">
-        <button id="modal-close"
-          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">OK</button>
+        <button id="modal-close" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">OK</button>
       </div>
     </div>
   </div>
@@ -377,8 +303,8 @@
           }
           const result = await response.json();
           if (result.candidates && result.candidates.length > 0 &&
-            result.candidates[0].content && result.candidates[0].content.parts &&
-            result.candidates[0].content.parts.length > 0) {
+              result.candidates[0].content && result.candidates[0].content.parts &&
+              result.candidates[0].content.parts.length > 0) {
             aiAdvice = result.candidates[0].content.parts[0].text;
             break;
           } else {
@@ -400,7 +326,7 @@
     }
 
     function analyserReponseEleve(texte, typeSection) {
-      switch (typeSection) {
+      switch(typeSection) {
         case 'intro': return analyserIntroduction(texte);
         case 'developpement': return analyserDeveloppement(texte);
         case 'conclusion': return analyserConclusion(texte);
@@ -668,8 +594,8 @@
 
       // Séparer le lieu et la date
       const dateParts = date.split(', le ');
-      const lieu = dateParts[0] ? dateParts[0] + ',' : '';
-      const formattedDate = dateParts[1] ? 'le ' + dateParts[1] : '';
+      const lieu = dateParts[0] ? dateParts[0] : '';
+      const formattedDate = dateParts[1] ? dateParts[1] : '';
 
       const html = `
         <div class="preview-print-coords">
@@ -677,11 +603,9 @@
         </div>
         <div class="preview-print-right">
           <p>${entreprise.split('\n').join('<br>')}</p>
-          <p></p> <!-- Saut de ligne -->
-          <p></p> <!-- Saut de ligne -->
-          <p>${lieu}</p>
-          <p></p> <!-- Saut de ligne -->
-          <p>${formattedDate}</p>
+          <p></p>
+          <p>${lieu},</p>
+          <p>le ${formattedDate}</p>
         </div>
         <h2 class="preview-print-objet">${objet}</h2>
         <p>${salutation}</p>
@@ -718,5 +642,6 @@
   </script>
 </body>
 </html>
+
 
 
