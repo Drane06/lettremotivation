@@ -599,15 +599,14 @@
 
       const html = `
         <div class="preview-print-coords">
-        ${coordonnees.split('\n').map(line => `<p>${line}</p>`).join('')}
-    </div>
-    <p></p> <!-- Saut de ligne entre les coordonnées et la date -->
-    <div class="preview-print-right">
-        <p>${entreprise.split('\n').join('<br>')}</p>
-        <p></p>
-        <p>${lieu},</p>
-        <p>le ${formattedDate}</p>
-    </div>
+          ${coordonnees.split('\n').map(line => `<p>${line}</p>`).join('')}
+        </div>
+        <div class="preview-print-right">
+          <p>${entreprise.split('\n').join('<br>')}</p>
+          <p></p>
+          <p>${lieu},</p>
+          <p>le ${formattedDate}</p>
+        </div>
         <h2 class="preview-print-objet">${objet}</h2>
         <p>${salutation}</p>
         <p class="mt-4">${intro}</p>
