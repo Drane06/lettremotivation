@@ -75,6 +75,7 @@
     .right-column { width: 45%; display: flex; flex-direction: column; align-items: flex-end; }
     .right-column .field { width: 100%; }
 
+    /* ===== Impression ===== */
     @media print {
       @page { size: A4; margin: 12mm; }
       html, body { background: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -82,10 +83,35 @@
       .container { display: block; max-width: none; }
       .sidebar, .print-button, .tools, .feedback { display: none !important; }
       .page { box-shadow: none; border-radius: 0; margin: 0; padding: 0; width: auto; min-height: auto; }
-      textarea, input { border: none !important; background: transparent !important; padding: 0 !important; font-size: 12pt !important; line-height: 1.6 !important; text-align: justify !important; }
-      input { text-align: left !important; }
+
+      /* ⚠️ Ne pas imposer un alignement global qui casse la colonne droite */
+      textarea, input {
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        font-size: 12pt !important;
+        line-height: 1.6 !important;
+        /* pas de text-align ici */
+      }
+
+      /* ✅ Conserver l’alignement à droite là où c’est voulu */
+      .right textarea,
+      .right input,
+      .right-column .field textarea,
+      .right-column .field input,
+      .date-input {
+        text-align: right !important;
+      }
+
+      /* ✅ Aligner à gauche le reste pour un rendu propre */
+      .page .field:not(.right) textarea,
+      .page .field:not(.right) input {
+        text-align: left !important;
+      }
+
       .coords { margin-bottom: 18mm; }
       .objet { margin: 12mm 0; }
+
       /* Correction pour la salutation */
       #salutation { color: black !important; }
     }
@@ -141,7 +167,7 @@ ENTREPRISE XYZ
               <input id="date-ville" class="date-input small" placeholder="Fait à [ville]" />
               <input id="date-jour" class="date-input" placeholder="le [jour mois année]" />
             </div>
-            <div class="inline-hint">Astuce : clique sur « Date auto » pour insérer la date du jour.</div>
+            <div class="inline-hint">Astuce : clique sur « Date auto » pour insérer la date du jour.</div>
             <div id="fb-date" class="feedback"></div>
           </div>
         </div>
@@ -160,7 +186,7 @@ ENTREPRISE XYZ
           <button class="btn" data-action="corriger" data-target="salutation">📝 Corriger</button>
         </div>
         <input id="salutation" placeholder="Madame, Monsieur," style="color: black;" />
-        <div class="inline-hint">Utilise « Madame, Monsieur, » si tu ne connais pas la civilité exacte.</div>
+        <div class="inline-hint">Utilise « Madame, Monsieur, » si tu ne connais pas la civilité exacte.</div>
         <div id="fb-salutation" class="feedback"></div>
       </div>
 
@@ -218,8 +244,8 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
 
       <div class="help-section"><h3>📍 Coordonnées</h3><p>Nom, adresse, téléphone, email. Précise que tu es élève de 3ème.</p></div>
       <div class="help-section"><h3>🏢 Destinataire</h3><p>Nom du responsable et adresse de l'entreprise. Cherche le nom exact si possible.</p></div>
-      <div class="help-section"><h3>📅 Date et lieu</h3><p>Format : « Fait à [ville], le [jour mois année] ».</p></div>
-      <div class="help-section"><h3>🎯 Objet</h3><p>« Objet : Demande de stage d'observation » + dates exactes.</p></div>
+      <div class="help-section"><h3>📅 Date et lieu</h3><p>Format : « Fait à [ville], le [jour mois année] ».</p></div>
+      <div class="help-section"><h3>🎯 Objet</h3><p>« Objet : Demande de stage d'observation » + dates exactes.</p></div>
       <div class="help-section"><h3>🎓 Introduction</h3><p>Qui es-tu, pourquoi l'entreprise, le cadre obligatoire, intérêt pour le domaine.</p></div>
       <div class="help-section"><h3>💪 Développement</h3><p>Qualités, centres d'intérêt, résultats, objectifs d'apprentissage.</p></div>
       <div class="help-section"><h3>🎯 Conclusion</h3><p>Motivation, proposition d'entretien/contact, remerciements.</p></div>
@@ -266,7 +292,7 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
       }
       if (!/élève|3ème|troisième|collège|classe/i.test(texte)) {
         analyse.faiblesses.push("Tu ne te présentes pas comme élève de 3ème.");
-        analyse.suggestions.push("Ex. : ‘Élève de 3ème au collège …’");
+        analyse.suggestions.push("Ex. : ‘Élève de 3ème au collège …’");
       } else {
         analyse.forces.push("Tu te présentes comme élève de 3ème : bien !");
       }
@@ -317,7 +343,7 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
         analyse.faiblesses.push("Proposition d'entretien ou de contact manquante.");
       } else { analyse.forces.push("Proposition de contact : bien."); }
       if (!/remercie|merci|reconnaissance|attention|considération/i.test(texte)) {
-        analyse.suggestions.push("Ajoute un remerciement (ex. : ‘Je vous remercie…’).");
+        analyse.suggestions.push("Ajoute un remerciement (ex. : ‘Je vous remercie…’).");
       }
       return analyse;
     }
@@ -334,9 +360,9 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
       } else { analyse.forces.push("Adresse email présente et correcte."); }
       const telRegex = /(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}/;
       if (!telRegex.test(texte)) {
-        analyse.faiblesses.push("Numéro de téléphone manquant ou mal formaté (ex. : 06 12 34 56 78).");
+        analyse.faiblesses.push("Numéro de téléphone manquant ou mal formaté (ex. : 06 12 34 56 78).");
       } else { analyse.forces.push("Numéro de téléphone bien formaté."); }
-      if (lignes.length < 3) analyse.faiblesses.push("Structure incomplète : Nom/Prénom, Adresse, Contact (≥ 3 lignes).");
+      if (lignes.length < 3) analyse.faiblesses.push("Structure incomplète : Nom/Prénom, Adresse, Contact (≥ 3 lignes).");
       return analyse;
     }
 
@@ -345,7 +371,7 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
       if (!/^\s*objet\s*:/i.test(texte)) analyse.corrections.push("Commence par ‘Objet :’.");
       if (!/stage|observation|découverte/i.test(texte)) analyse.faiblesses.push("Utilise ‘stage d'observation’ ou ‘séquence d'observation’.");
       if (!/février|9.*13.*février|du\s*9\s*au\s*13/i.test(texte)) {
-        analyse.faiblesses.push("Précise les dates exactes (ex. : du 9 au 13 février 2026).");
+        analyse.faiblesses.push("Précise les dates exactes (ex. : du 9 au 13 février 2026).");
       } else { analyse.forces.push("Dates du stage précisées."); }
       if (/candidature|poste|emploi|embauche/i.test(texte)) analyse.corrections.push("Remplace ‘candidature’/‘poste’ par ‘Demande de stage d'observation’.");
       return analyse;
@@ -360,7 +386,7 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
 
     function analyserPolitesse(texte){
       const a = { forces: [], faiblesses: [], corrections: [], suggestions: [] };
-      if (!/agréer|salutations|distinguée|distinguées/i.test(texte)) a.suggestions.push("Utilise une formule standard (ex. : ‘Je vous prie d'agréer…’).");
+      if (!/agréer|salutations|distinguée|distinguées/i.test(texte)) a.suggestions.push("Utilise une formule standard (ex. : ‘Je vous prie d'agréer…’).");
       if (!/[.!?]$/.test(texte.trim())) a.corrections.push("Termine par un point.");
       return a;
     }
@@ -414,8 +440,8 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
         if (value && !/\[|\]/.test(value)) completed++;
       });
       const pct = Math.round((completed / fields.length) * 100);
-      $('#progress').style.width = pct + '%';
-      $('#progress-text').textContent = `Progression : ${completed}/${fields.length} sections complétées`;
+      document.getElementById('progress').style.width = pct + '%';
+      document.getElementById('progress-text').textContent = `Progression : ${completed}/${fields.length} sections complétées`;
     }
 
     function imprimerLettre() {
@@ -426,15 +452,14 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
         const ok = confirm("Certaines sections semblent incomplètes :\n- " + vides.join("\n- ") + "\n\nVoulez-vous imprimer quand même ?");
         if (!ok) return;
       }
-      // Astuce pour Chrome/Edge : forcer les couleurs d'arrière-plan
       document.body.classList.add('printing');
       window.print();
       setTimeout(() => document.body.classList.remove('printing'), 500);
     }
 
     function fillDateAuto(){
-      const champVille = $('#date-ville');
-      const champJour = $('#date-jour');
+      const champVille = document.getElementById('date-ville');
+      const champJour = document.getElementById('date-jour');
       if (!champVille.value.trim()) champVille.value = `Fait à [ville]`;
       if (!champJour.value.trim()) champJour.value = `le ${formatDateFr()}`;
       corriger('date-ville');
@@ -484,12 +509,9 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
     function handleInput(){ updateProgress(); updateMeters(); save(); }
 
     function attachListeners(){
-      // Bouton d'impression
-      $('#printBtn').addEventListener('click', imprimerLettre);
+      document.getElementById('printBtn').addEventListener('click', imprimerLettre);
 
-      // Écouteurs champs
-      $$('textarea, input').forEach(el => {
-        // auto-resize pour textarea
+      Array.from(document.querySelectorAll('textarea, input')).forEach(el => {
         if (el.tagName === 'TEXTAREA'){
           const autoresize = () => { el.style.height = 'auto'; el.style.height = el.scrollHeight + 'px'; };
           el.addEventListener('input', autoresize);
@@ -499,7 +521,6 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
         el.addEventListener('blur', handleInput);
       });
 
-      // Délégation des boutons
       document.body.addEventListener('click', (e) =>{
         const btn = e.target.closest('button'); if (!btn) return;
         const action = btn.getAttribute('data-action');
@@ -514,15 +535,14 @@ Montre ta motivation, propose un contact, remercie…"></textarea>
         }
         if (action === 'exemple'){
           const id = btn.getAttribute('data-target');
-          if (id === 'coordonnees') $('#coordonnees').value = `Léa MARTIN (élève de 3ème)\n15 rue de la Paix\n75001 PARIS\n06 12 34 56 78 / lea.martin@email.fr`;
-          if (id === 'entreprise') $('#entreprise').value = `Mme Marie MARTIN\nDirectrice des Ressources Humaines\nENTREPRISE XYZ\n12 avenue des Champs\n75008 PARIS`;
+          if (id === 'coordonnees') document.getElementById('coordonnees').value = `Léa MARTIN (élève de 3ème)\n15 rue de la Paix\n75001 PARIS\n06 12 34 56 78 / lea.martin@email.fr`;
+          if (id === 'entreprise') document.getElementById('entreprise').value = `Mme Marie MARTIN\nDirectrice des Ressources Humaines\nENTREPRISE XYZ\n12 avenue des Champs\n75008 PARIS`;
           handleInput();
         }
         if (action === 'date-auto') fillDateAuto();
       });
     }
 
-    // Démarrage
     restore();
     attachListeners();
     handleInput();
